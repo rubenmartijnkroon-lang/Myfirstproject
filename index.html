@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein erstes Projekt | GARBE Industrial</title>
+  <meta name="description" content="Meine erste Website, gebaut mit HTML, CSS und JavaScript.">
+  <style>
+    :root {
+      --blau: #003255;
+      --gruen: #64B42D;
+      --ocker: #a48113;
+      --hell: #f4f7fa;
+      --text: #1d2b36;
+      --grau: #5b6b78;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Open Sans", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: #fff;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--blau);
+      color: #fff;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5%;
+    }
+    header .logo { font-weight: 700; letter-spacing: .02em; }
+    nav a {
+      color: #fff; text-decoration: none; margin-left: 1.5rem;
+      border-bottom: 2px solid transparent; padding-bottom: 2px;
+    }
+    nav a:hover, nav a:focus-visible { border-bottom-color: var(--gruen); outline: none; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--blau);
+      color: #fff;
+      padding: 6rem 5%;
+      text-align: left;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero::after {
+      /* Abdunkelung, damit der Text gut lesbar bleibt */
+      content: "";
+      position: absolute; inset: 0;
+      background: rgba(0, 50, 85, .72);
+      z-index: -1;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.2; max-width: 22ch; }
+    .hero p { margin-top: 1rem; max-width: 60ch; font-size: 1.1rem; opacity: .92; }
+    .btn {
+      display: inline-block; margin-top: 2rem;
+      background: var(--gruen); color: #fff; font-weight: 700;
+      padding: .8rem 1.6rem; border-radius: 4px; text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover, .btn:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.2); outline: none; }
+    section { padding: 4rem 5%; }
+    section h2 { color: var(--blau); font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card {
+      background: var(--hell); border-left: 4px solid var(--gruen);
+      padding: 1.5rem; border-radius: 4px;
+    }
+    .card h3 { color: var(--blau); margin-bottom: .5rem; }
+    .card p { color: var(--grau); }
+    .zaehler { background: var(--hell); text-align: center; }
+    .zaehler .zahl { font-size: 3rem; font-weight: 700; color: var(--ocker); }
+    form { display: grid; gap: 1rem; max-width: 520px; }
+    label { font-weight: 600; color: var(--blau); }
+    input, textarea {
+      width: 100%; padding: .7rem; font: inherit;
+      border: 1px solid #c9d3dc; border-radius: 4px;
+    }
+    input:focus-visible, textarea:focus-visible { outline: 3px solid var(--gruen); outline-offset: 1px; }
+    button {
+      justify-self: start; background: var(--blau); color: #fff; border: 0;
+      padding: .8rem 1.6rem; font: inherit; font-weight: 700; border-radius: 4px; cursor: pointer;
+    }
+    button:hover, button:focus-visible { background: var(--gruen); outline: none; }
+    #meldung { margin-top: 1rem; color: var(--gruen); font-weight: 600; min-height: 1.5rem; }
+    footer {
+      background: var(--blau); color: #fff; text-align: center;
+      padding: 1.5rem 5%; font-size: .9rem;
+    }
+    @media (max-width: 640px) {
+      header { flex-direction: column; gap: .75rem; }
+      nav a { margin: 0 .75rem; }
+      .hero { padding: 4rem 5%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+      .hero-video { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">GARBE Industrial</div>
+    <nav aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#zahlen">Zahlen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto"
+             poster="assets/logistik-poster.jpg" aria-hidden="true">
+        <source src="assets/logistik.mp4" type="video/mp4">
+      </video>
+      <h1>Mit Immobilien Werte schaffen.</h1>
+      <p>Diese Seite ist mein erstes Projekt. Sie zeigt, wie aus einer Idee in wenigen Schritten eine funktionierende Website wird.</p>
+      <a class="btn" href="#kontakt">Jetzt Kontakt aufnehmen</a>
+    </div>
+
+    <section id="leistungen">
+      <h2>Leistungen</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Projektentwicklung</h3>
+          <p>Flächen für Logistik, Industrie und Gewerbe, passend zu deinem Bedarf.</p>
+        </article>
+        <article class="card">
+          <h3>Investment</h3>
+          <p>Strukturierte Investmentansätze entlang einer integrierten Plattform.</p>
+        </article>
+        <article class="card">
+          <h3>Vermietung &amp; Management</h3>
+          <p>Langfristige Nutzbarkeit und Werthaltigkeit über den gesamten Lebenszyklus.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="zahlen" class="zaehler">
+      <h2>Zahlen &amp; Fakten</h2>
+      <div class="grid">
+        <div><div class="zahl">1965</div><p>Gründungsjahr</p></div>
+        <div><div class="zahl">600+</div><p>Fachleute</p></div>
+        <div><div class="zahl">21</div><p>Standorte</p></div>
+        <div><div class="zahl">14</div><p>Länder</p></div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <form id="kontaktformular">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div>
+          <label for="email">E-Mail</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht" rows="4" required></textarea>
+        </div>
+        <button type="submit">Senden</button>
+        <p id="meldung" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 GARBE Industrial. Dies ist ein Lernprojekt.</p>
+  </footer>
+
+  <script>
+    document.getElementById('kontaktformular').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      document.getElementById('meldung').textContent = 'Danke, ' + name + '! Deine Nachricht wurde (lokal) entgegengenommen.';
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
